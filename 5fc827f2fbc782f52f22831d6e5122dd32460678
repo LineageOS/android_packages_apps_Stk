@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVX//98I\u003d",
+        "filename": "src/com/android/stk/ToneDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 2831
+      },
+      "writtenOn": "2012-07-24T06:10:03Z",
+      "side": 1,
+      "message": "please add a extra space here while you\u0027re at it",
+      "revId": "5fc827f2fbc782f52f22831d6e5122dd32460678",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
