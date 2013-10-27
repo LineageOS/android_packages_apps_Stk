@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a4dcd0f_0a1763a4",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-27T03:13:26Z",
+      "side": 1,
+      "message": "Sim 2-toolkit",
+      "revId": "ed1d12564b7ca0c48a5b371952efc86bb3572a6a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_ef2a49e7",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 1
@@ -49,6 +66,24 @@
       "side": 1,
       "message": "Er zit een typfout in toolkit.",
       "parentUuid": "1a4dcd0f_6a3f0726",
+      "revId": "ed1d12564b7ca0c48a5b371952efc86bb3572a6a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_aa0bcf7c",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-27T03:13:26Z",
+      "side": 1,
+      "message": "- Sim 3-toolkit",
+      "parentUuid": "1a4dcd0f_2a49ffd0",
       "revId": "ed1d12564b7ca0c48a5b371952efc86bb3572a6a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
