@@ -141,6 +141,24 @@
       "revId": "ed1d12564b7ca0c48a5b371952efc86bb3572a6a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_f5b538d0",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7630
+      },
+      "writtenOn": "2013-10-27T11:49:19Z",
+      "side": 1,
+      "message": "SIM-toolkit lijkt me :-)",
+      "parentUuid": "1a4dcd0f_aad0afca",
+      "revId": "ed1d12564b7ca0c48a5b371952efc86bb3572a6a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
