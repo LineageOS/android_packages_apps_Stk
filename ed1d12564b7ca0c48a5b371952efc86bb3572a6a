@@ -87,6 +87,24 @@
       "revId": "ed1d12564b7ca0c48a5b371952efc86bb3572a6a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_ca5e5b76",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2013-10-27T03:23:27Z",
+      "side": 1,
+      "message": "Nee ik zou het dan op SIM-toolkit 3 houden, kan anders raar gesorteerd worden in je app-overzicht",
+      "parentUuid": "1a4dcd0f_aa0bcf7c",
+      "revId": "ed1d12564b7ca0c48a5b371952efc86bb3572a6a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
