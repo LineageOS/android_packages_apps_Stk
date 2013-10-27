@@ -105,6 +105,24 @@
       "revId": "ed1d12564b7ca0c48a5b371952efc86bb3572a6a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_aad0afca",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-27T03:27:11Z",
+      "side": 1,
+      "message": "Maar SIM-toolkit of Simtoolkit?",
+      "parentUuid": "1a4dcd0f_ca5e5b76",
+      "revId": "ed1d12564b7ca0c48a5b371952efc86bb3572a6a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
