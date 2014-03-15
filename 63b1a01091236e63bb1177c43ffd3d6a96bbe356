@@ -52,6 +52,24 @@
       "revId": "63b1a01091236e63bb1177c43ffd3d6a96bbe356",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_4d114cac",
+        "filename": "res/values-nl/cm_caf.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7630
+      },
+      "writtenOn": "2014-03-15T22:07:53Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "bae84128_1c52d813",
+      "revId": "63b1a01091236e63bb1177c43ffd3d6a96bbe356",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
