@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_b93f6c24",
+        "filename": "res/values-da/cm_caf.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2014-03-26T14:40:33Z",
+      "side": 1,
+      "message": "1 line too many, not sure if that\u0027s a real problem",
+      "revId": "41355f0bd851274c09eb504f6a724351d58f821f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
