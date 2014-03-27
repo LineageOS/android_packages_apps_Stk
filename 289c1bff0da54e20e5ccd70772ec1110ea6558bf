@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_92ca3da0",
+        "filename": "res/values-da/cm_caf.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-03-27T23:17:36Z",
+      "side": 1,
+      "message": "Original string: \"Call is being setup\\u2026\"",
+      "revId": "289c1bff0da54e20e5ccd70772ec1110ea6558bf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
