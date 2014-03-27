@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bae84128_f79c5b6b",
+        "filename": "res/values-da/cm_caf.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-03-27T10:58:51Z",
+      "side": 1,
+      "message": "Please follow the changes that were made in the original strings http://review.cyanogenmod.org/#/c/60841/1/res/values/strings.xml",
+      "revId": "41355f0bd851274c09eb504f6a724351d58f821f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae84128_b93f6c24",
         "filename": "res/values-da/cm_caf.xml",
         "patchSetId": 3
