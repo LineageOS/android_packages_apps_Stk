@@ -19,6 +19,8 @@ package com.android.stk;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.KeyEvent;
@@ -28,10 +30,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 
 import com.android.internal.telephony.cat.Item;
 import com.android.internal.telephony.cat.Menu;
 import com.android.internal.telephony.cat.CatLog;
+import com.android.internal.telephony.OperatorSimInfo;
 import com.android.internal.telephony.PhoneConstants;
 
 import android.telephony.TelephonyManager;
@@ -178,6 +184,11 @@ public class StkLauncherActivity extends ListActivity {
                 mSingleSimId = i;
                 stkItemName = new StringBuilder(appName).append(" ")
                         .append(Integer.toString(i + 1)).toString();
+                //Sim Icon Customisation feature change
+                String operatorSimLabel = getOperatorSimLabel(i);
+                if (!TextUtils.isEmpty(operatorSimLabel)) {
+                    stkItemName = operatorSimLabel;
+                }
                 Item item = new Item(i + 1, stkItemName, mBitMap);
                 item.id = i;
                 mStkMenuList.add(item);
@@ -207,4 +218,21 @@ public class StkLauncherActivity extends ListActivity {
         startService(new Intent(this, StkAppService.class)
                 .putExtras(args));
     }
+
+    private String getOperatorSimLabel(int slotIndex) {
+        String operatorSimLabel = "";
+        OperatorSimInfo operatorSimInfo = new OperatorSimInfo(mContext);
+        if (operatorSimInfo.isOperatorFeatureEnabled()) {
+            if (operatorSimInfo.isSimTypeOperator(slotIndex)) {
+                mBitMap = ((BitmapDrawable)operatorSimInfo.getOperatorDrawable()).getBitmap();
+                operatorSimLabel = operatorSimInfo.getOperatorDisplayName();
+            } else {
+                mBitMap = ((BitmapDrawable)operatorSimInfo.getGenericSimDrawable()).getBitmap();
+                operatorSimLabel = TelephonyManager.from(mContext).
+                        getSimOperator(SubscriptionManager.getSubId(slotIndex)[0]);
+            }
+        }
+        return operatorSimLabel;
+    }
+
 }
