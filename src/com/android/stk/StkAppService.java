@@ -44,10 +44,12 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
+import android.os.PersistableBundle;
 import android.os.PowerManager;
 import android.os.SystemProperties;
 import android.os.Vibrator;
 import android.provider.Settings;
+import android.telephony.CarrierConfigManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -125,6 +127,7 @@ public class StkAppService extends Service implements Runnable {
         protected int mMenuState = StkMenuActivity.STATE_INIT;
         protected int mOpCode = -1;
         private Activity mActivityInstance = null;
+        private Activity mPrevActivityInstance = null;
         private Activity mDialogInstance = null;
         private Activity mMainActivityInstance = null;
         private int mSlotId = 0;
@@ -141,6 +144,11 @@ public class StkAppService extends Service implements Runnable {
             CatLog.d(this, "getPendingActivityInstance act : " + mSlotId + ", " +
                     mActivityInstance);
             return mActivityInstance;
+        }
+        final synchronized Activity getPendingPrevActivityInstance() {
+            CatLog.d(this, "getPendingPrevActivityInstance act : " + mSlotId + ", " +
+                    mPrevActivityInstance);
+            return mPrevActivityInstance;
         }
         final synchronized void setPendingDialogInstance(Activity act) {
             CatLog.d(this, "setPendingDialogInstance act : " + mSlotId + ", " + act);
@@ -602,6 +610,7 @@ public class StkAppService extends Service implements Runnable {
                 Activity act = new Activity();
                 act = (Activity) msg.obj;
                 CatLog.d(LOG_TAG, "Set activity instance. " + act);
+                mStkContext[slotId].mPrevActivityInstance = mStkContext[slotId].mActivityInstance;
                 mStkContext[slotId].mActivityInstance = act;
                 break;
             case OP_SET_DAL_INST:
@@ -882,6 +891,28 @@ public class StkAppService extends Service implements Runnable {
         return false;
     }
 
+    /**
+     * Get the boolean config from carrier config manager.
+     *
+     * @param context the context to get carrier service
+     * @param key config key defined in CarrierConfigManager
+     * @return boolean value of corresponding key.
+     */
+    private static boolean getBooleanCarrierConfig(Context context, String key) {
+        CarrierConfigManager configManager = (CarrierConfigManager) context.getSystemService(
+                Context.CARRIER_CONFIG_SERVICE);
+        PersistableBundle b = null;
+        if (configManager != null) {
+            b = configManager.getConfig();
+        }
+        if (b != null) {
+            return b.getBoolean(key);
+        } else {
+            // Return static default defined in CarrierConfigManager.
+            return CarrierConfigManager.getDefaultConfig().getBoolean(key);
+        }
+    }
+
     private void handleCmd(CatCmdMessage cmdMsg, int slotId) {
 
         if (cmdMsg == null) {
@@ -1010,6 +1041,14 @@ public class StkAppService extends Service implements Runnable {
             }
             break;
         case LAUNCH_BROWSER:
+            /* Check if Carrier would not want to launch browser */
+            if (getBooleanCarrierConfig(mContext,
+                    CarrierConfigManager.KEY_STK_DISABLE_LAUNCH_BROWSER_BOOL)) {
+                CatLog.d(this, "Browser is not launched as per carrier.");
+                sendResponse(RES_ID_DONE, slotId, true);
+                break;
+            }
+
             mStkContext[slotId].mBrowserSettings =
                     mStkContext[slotId].mCurrentCmd.getBrowserSettings();
             if (!validateBrowserRequest(mStkContext[slotId].mBrowserSettings)) {
@@ -1275,6 +1314,7 @@ public class StkAppService extends Service implements Runnable {
      */
     private void cleanUpInstanceStackBySlot(int slotId) {
         Activity activity = mStkContext[slotId].getPendingActivityInstance();
+        Activity prevActivity = mStkContext[slotId].getPendingPrevActivityInstance();
         Activity dialog = mStkContext[slotId].getPendingDialogInstance();
         CatLog.d(LOG_TAG, "cleanUpInstanceStackBySlot slotId: " + slotId);
         if (mStkContext[slotId].mCurrentCmd == null) {
@@ -1295,6 +1335,11 @@ public class StkAppService extends Service implements Runnable {
                     AppInterface.CommandType.SELECT_ITEM.value()) {
                 mStkContext[slotId].mIsMenuPending = true;
             } else {
+            }
+            if (prevActivity != null) {
+                CatLog.d(LOG_TAG, "finish pending prev activity at first.");
+                prevActivity.finish();
+                mStkContext[slotId].mPrevActivityInstance = null;
             }
             CatLog.d(LOG_TAG, "finish pending activity.");
             activity.finish();
