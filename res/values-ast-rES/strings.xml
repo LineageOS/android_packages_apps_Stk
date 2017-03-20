@@ -39,4 +39,5 @@
   <!-- Default message when no alpha in CLOSE_CHANNEL-->
   <!-- Button texts used in STK dialog -->
   <!-- Permission required for receiving intents from StkAppService-->
+  <string name="stk_intent_permission">Permitir intentos STK </string>
 </resources>
