@@ -21,11 +21,9 @@
   <!-- Menu button option to navigate back to the previous screen -->
   <!-- Settings entry which describes the current SIM Toolkit service on the device -->
   <!-- Default description for service_name when no STK service is available -->
-  <string name="stk_no_service">Serviciu non disponible</string>
   <!-- OK button used to confirm a message dialog -->
   <string name="button_ok">ACEUTAR</string>
   <!-- Cancel button used to dismiss a message dialog and terminate the current SIM session-->
-  <string name="button_cancel">Encaboxar</string>
   <!-- Yes button, used on a Yes/No confirmation screen -->
   <!-- No button, used on a Yes/No confirmation screen -->
   <!-- Description for the type of text allowed in a form: alphanumeric or digits only -->
