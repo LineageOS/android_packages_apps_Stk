@@ -31,10 +31,12 @@
   <!-- Default message for SET_UP_CALL when there is no ALPHA tag in it -->
   <!-- Title text used for system dialog from STK app -->
   <!-- Default message when no alpha tag in Play Tone -->
+  <string name="default_tone_dialog_msg">Tôn Chwarae</string>
   <!-- Default message when no alpha in OPEN_CHANNEL -->
   <!-- Default message when no alpha in SEND_DATA -->
   <!-- Default message when no alpha in RECEIVE_DATA -->
   <!-- Default message when no alpha in CLOSE_CHANNEL-->
   <!-- Button texts used in STK dialog -->
   <!-- Permission required for receiving intents from StkAppService-->
+  <string name="stk_intent_permission">Caniatáu Dibenion STK </string>
 </resources>
