@@ -58,4 +58,5 @@
   <string name="default_close_channel_msg">Sianel wedi\'i Gau</string>
   <!-- Button texts used in STK dialog -->
   <string name="no_sim_card_inserted">Gosoda SIM er mwyn lansio\'r blwch offer SIM.</string>
+  <string name="stk_channel_name">Negeseuon gwasanaeth symudol</string>
 </resources>
