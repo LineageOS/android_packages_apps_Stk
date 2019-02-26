@@ -16,7 +16,9 @@
 -->
 <resources>
     <!-- Default Application label used on home screen with an icon -->
+    <string name="app_name">SIM Toolkit</string>
     <!-- Menu button option for ending current SIM session -->
+    <string name="menu_end_session">Fin de sesión</string>
     <!-- Menu button option for requesting additional help information -->
     <string name="help">Ayuda</string>
     <!-- Menu button option to navigate back to the previous screen -->
@@ -24,6 +26,7 @@
     <!-- Settings entry which describes the current SIM Toolkit service on the device -->
     <string name="service_name">Nome del serviciu</string>
     <!-- Default description for service_name when no STK service is available -->
+    <string name="stk_no_service">Serviciu non disponible</string>
     <!-- OK button used to confirm a message dialog -->
     <string name="button_ok">ACEUTAR</string>
     <!-- Cancel button used to dismiss a message dialog and terminate the current SIM session-->
@@ -44,6 +47,7 @@
     <string name="enable_app">Activóse</string>
     <string name="disable_app">Desactivóse</string>
     <!-- Title text used for system dialog from STK app -->
+    <string name="stk_dialog_title">SIM ToolKit</string>
     <!-- Default message when no alpha tag in Play Tone -->
     <!-- Default message when no alpha in OPEN_CHANNEL -->
     <string name="default_open_channel_msg">¿Abrir canal?</string>
