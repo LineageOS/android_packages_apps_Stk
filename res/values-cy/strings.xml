@@ -15,50 +15,29 @@
      limitations under the License.
 -->
 <resources>
-    <!-- Default Application label used on home screen with an icon -->
     <string name="app_name">Blwch Offer SIM</string>
-    <!-- Menu button option for ending current SIM session -->
-    <string name="menu_end_session">Diweddu sesiwns</string>
-    <!-- Menu button option for requesting additional help information -->
+    <string name="menu_end_session">Diweddu sesiwn</string>
     <string name="help">Cymorth</string>
-    <!-- Menu button option to navigate back to the previous screen -->
     <string name="menu_back">Nôl</string>
-    <!-- Settings entry which describes the current SIM Toolkit service on the device -->
     <string name="service_name">Enw\'r gwasanaeth</string>
-    <!-- Default description for service_name when no STK service is available -->
     <string name="stk_no_service">Dim gwasanaeth ar gael</string>
-    <!-- OK button used to confirm a message dialog -->
     <string name="button_ok">Iawn</string>
-    <!-- Cancel button used to dismiss a message dialog and terminate the current SIM session-->
     <string name="button_cancel">Diddymu</string>
-    <!-- Yes button, used on a Yes/No confirmation screen -->
     <string name="button_yes">Ie</string>
-    <!-- No button, used on a Yes/No confirmation screen -->
     <string name="button_no">Na</string>
-    <!-- Description for the type of text allowed in a form: alphanumeric or digits only -->
     <string name="alphabet">Llythrennau</string>
-    <!-- Type of alphabet text allowed in a form: 0-9, *, #, + characters only -->
     <string name="digits">Digidau (0-9, *, #, +)</string>
-    <!-- Default transition message when launching a call -->
     <string name="default_call_setup_msg">Galwad ar y gweill\u2026</string>
-    <!-- Default message for SET_UP_CALL when there is no ALPHA tag in it -->
     <string name="default_setup_call_msg">Galwad yn cael ei osod</string>
-    <string name="stk_app_state">Cyflwr yr ap</string>
+    <string name="stk_app_state">Statws yr ap</string>
     <string name="enable_app">Galluogwyd</string>
     <string name="disable_app">Analluogwyd</string>
-    <!-- Title text used for system dialog from STK app -->
     <string name="stk_dialog_title">Blwch Offer SIM</string>
-    <!-- Default message when no alpha tag in Play Tone -->
     <string name="default_tone_dialog_msg">Tôn Chwarae</string>
-    <!-- Default message when no alpha in OPEN_CHANNEL -->
     <string name="default_open_channel_msg">Agor Sianel?</string>
-    <!-- Default message when no alpha in SEND_DATA -->
     <string name="default_send_data_msg">Yn Anfon Data</string>
-    <!-- Default message when no alpha in RECEIVE_DATA -->
     <string name="default_receive_data_msg">Yn Derbyn Data</string>
-    <!-- Default message when no alpha in CLOSE_CHANNEL-->
     <string name="default_close_channel_msg">Sianel wedi\'i Gau</string>
-    <!-- Button texts used in STK dialog -->
     <string name="stk_dialog_accept">IE</string>
     <string name="stk_dialog_reject">NA</string>
     <string name="no_sim_card_inserted">Gosoda SIM er mwyn lansio\'r blwch offer SIM.</string>
