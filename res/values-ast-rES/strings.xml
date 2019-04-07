@@ -33,6 +33,7 @@
     <string name="enable_app">Activóse</string>
     <string name="disable_app">Desactivóse</string>
     <string name="stk_dialog_title">SIM ToolKit</string>
+    <string name="default_tone_dialog_msg">Reproduciendo tonu</string>
     <string name="default_open_channel_msg">¿Abrir canal?</string>
     <string name="default_send_data_msg">Unviando datos</string>
     <string name="default_receive_data_msg">Recibiendo datos</string>
