@@ -17,6 +17,5 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Default message when no alpha tag in Play Tone -->
-  <!-- Permission required for receiving intents from StkAppService-->
+    <string name="default_tone_dialog_msg">დაკვრის ხმა</string>
 </resources>
