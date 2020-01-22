@@ -2320,6 +2320,10 @@ public class StkAppService extends Service implements Runnable {
         }
     }
 
+    boolean isNoTonePlaying() {
+        return mTonePlayer == null ? true : false;
+    }
+
     private void launchOpenChannelDialog(final int slotId) {
         TextMessage msg = mStkContext[slotId].mCurrentCmd.geTextMessage();
         if (msg == null) {
