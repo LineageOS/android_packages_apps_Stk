@@ -15,7 +15,29 @@
 -->
 <resources>
     <string name="app_name">Acainnean SIM</string>
+    <string name="menu_end_session">Cuir crìoch air an t-seisean</string>
     <string name="help">Cobhair</string>
+    <string name="menu_back">Air ais</string>
+    <string name="service_name">Ainm na seirbhise</string>
+    <string name="stk_no_service">Chan eil seirbheis ri làimh</string>
+    <string name="button_ok">Ceart ma-thà</string>
+    <string name="button_cancel">Sguir dheth</string>
+    <string name="button_yes">Tha</string>
+    <string name="button_no">Chan eil</string>
+    <string name="alphabet">Aibidilean</string>
+    <string name="digits">Àireamhan (0-9, *, #, +)</string>
+    <string name="default_call_setup_msg">Gairm a’ dol air adhart…</string>
+    <string name="default_setup_call_msg">Gairm ’ga ullachadh</string>
+    <string name="stk_app_state">Staid na h-aplacaid</string>
+    <string name="enable_app">An comas</string>
     <string name="disable_app">À comas</string>
+    <string name="stk_dialog_title">Acainnean SIM</string>
     <string name="default_tone_dialog_msg">Seirm cluiche</string>
+    <string name="default_open_channel_msg">A bheil thu airson an t-seanail fhosgladh?</string>
+    <string name="default_send_data_msg">A’ cur dàta</string>
+    <string name="default_receive_data_msg">A’ faighinn dàta</string>
+    <string name="default_close_channel_msg">Seanail dhùinte</string>
+    <string name="stk_dialog_accept">THA</string>
+    <string name="stk_dialog_reject">CHAN EIL</string>
+    <string name="no_sim_card_inserted">Cuir a-steach SIM airson na h-acainnean SIM a chur gu dol.</string>
 </resources>
