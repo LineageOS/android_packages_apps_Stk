@@ -20,6 +20,10 @@
         package="com.android.stk"
         android:sharedUserId="android.uid.phone">
 
+    <uses-sdk
+        android:minSdkVersion="29"
+        android:targetSdkVersion="30" />
+        
     <original-package android:name="com.android.stk" />
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
