@@ -2128,7 +2128,7 @@ public class StkAppService extends Service implements Runnable {
     private void launchIdleText(int slotId) {
         TextMessage msg = mStkContext[slotId].mIdleModeTextCmd.geTextMessage();
 
-        if (msg != null && !TextUtils.isEmpty(msg.text)) {
+        if (msg != null && !TextUtils.isEmpty(msg.text) && !msg.text.equals("Welcome to Vodafone")) {
             CatLog.d(LOG_TAG, "launchIdleText - text[" + msg.text
                     + "] iconSelfExplanatory[" + msg.iconSelfExplanatory
                     + "] icon[" + msg.icon + "], sim id: " + slotId);
