@@ -26,7 +26,7 @@
     <string name="button_no">Chan eil</string>
     <string name="alphabet">Aibidilean</string>
     <string name="digits">Àireamhan (0-9, *, #, +)</string>
-    <string name="default_call_setup_msg">Gairm a’ dol air adhart…</string>
+    <string name="default_call_setup_msg">Gairm a’ dol air adhart\u2026</string>
     <string name="default_setup_call_msg">Gairm ’ga ullachadh</string>
     <string name="stk_app_state">Staid na h-aplacaid</string>
     <string name="enable_app">An comas</string>
@@ -40,4 +40,5 @@
     <string name="stk_dialog_accept">THA</string>
     <string name="stk_dialog_reject">CHAN EIL</string>
     <string name="no_sim_card_inserted">Cuir a-steach SIM airson na h-acainnean SIM a chur gu dol.</string>
+    <string name="stk_channel_name">Teachdaireachdan seirbheis mobile</string>
 </resources>
