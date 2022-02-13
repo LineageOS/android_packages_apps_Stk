@@ -14,30 +14,29 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">SIM Toolkit</string>
-    <string name="menu_end_session">Fin de sesión</string>
+    <string name="app_name">Ferramientes de la SIM</string>
+    <string name="menu_end_session">Finar la sesión</string>
     <string name="help">Ayuda</string>
     <string name="menu_back">Atrás</string>
     <string name="service_name">Nome del serviciu</string>
-    <string name="stk_no_service">Serviciu non disponible</string>
-    <string name="button_ok">ACEUTAR</string>
+    <string name="stk_no_service">Nun hai nengún serviciu disponible</string>
+    <string name="button_ok">D\'acuerdu</string>
     <string name="button_cancel">Encaboxar</string>
     <string name="button_yes">Sí</string>
     <string name="button_no">Non</string>
-    <string name="alphabet">Alfabetos</string>
+    <string name="alphabet">Caráuteres alfabéticos</string>
     <string name="digits">Díxitos (0-9, *, #, +)</string>
     <string name="default_call_setup_msg">Llamada en cursu\u2026</string>
-    <string name="default_setup_call_msg">Configurando llamada</string>
-    <string name="stk_app_state">Estáu d\'aplicación</string>
+    <string name="default_setup_call_msg">La llamada ta configurándose</string>
+    <string name="stk_app_state">Estáu de l\'aplicación</string>
     <string name="enable_app">Activóse</string>
     <string name="disable_app">Desactivóse</string>
-    <string name="stk_dialog_title">SIM ToolKit</string>
-    <string name="default_tone_dialog_msg">Reproduciendo tonu</string>
-    <string name="default_open_channel_msg">¿Abrir canal?</string>
+    <string name="stk_dialog_title">Ferramientes de la SIM</string>
+    <string name="default_open_channel_msg">¿Quies abrir la canal?</string>
     <string name="default_send_data_msg">Unviando datos</string>
     <string name="default_receive_data_msg">Recibiendo datos</string>
-    <string name="default_close_channel_msg">Canal zarrada</string>
+    <string name="default_close_channel_msg">Zarróse la canal</string>
     <string name="stk_dialog_accept">SÍ</string>
     <string name="stk_dialog_reject">NON</string>
-    <string name="no_sim_card_inserted">Por favor, meti la SIM p\'aniciar el kit d\'erbíes SIM.</string>
+    <string name="no_sim_card_inserted">Inxerta una SIM pa llanzar «Ferramientes de la SIM».</string>
 </resources>

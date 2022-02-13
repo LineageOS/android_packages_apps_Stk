@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">Acainnean SIM</string>
+    <string name="app_name">Acainn SIM</string>
     <string name="menu_end_session">Cuir crìoch air an t-seisean</string>
     <string name="help">Cobhair</string>
     <string name="menu_back">Air ais</string>
@@ -31,7 +31,7 @@
     <string name="stk_app_state">Staid na h-aplacaid</string>
     <string name="enable_app">An comas</string>
     <string name="disable_app">À comas</string>
-    <string name="stk_dialog_title">Acainnean SIM</string>
+    <string name="stk_dialog_title">Acainn SIM</string>
     <string name="default_tone_dialog_msg">Seirm cluiche</string>
     <string name="default_open_channel_msg">A bheil thu airson an t-seanail fhosgladh?</string>
     <string name="default_send_data_msg">A’ cur dàta</string>
@@ -39,6 +39,6 @@
     <string name="default_close_channel_msg">Seanail dhùinte</string>
     <string name="stk_dialog_accept">THA</string>
     <string name="stk_dialog_reject">CHAN EIL</string>
-    <string name="no_sim_card_inserted">Cuir a-steach SIM airson na h-acainnean SIM a chur gu dol.</string>
+    <string name="no_sim_card_inserted">Cuir a-steach SIM airson acainn nan SIM a chur gu dol.</string>
     <string name="stk_channel_name">Teachdaireachdan seirbheis mobile</string>
 </resources>
