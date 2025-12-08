@@ -42,5 +42,5 @@
     <string name="stk_dialog_accept" msgid="2899431442032305374">"ใช่"</string>
     <string name="stk_dialog_reject" msgid="1455086565615694879">"ไม่"</string>
     <string name="no_sim_card_inserted" msgid="3177955793136053581">"โปรดใส่ซิมเพื่อเปิด SIM Toolkit"</string>
-    <string name="stk_channel_name" msgid="3945765236566954372">"ข้อความบริการอุปกรณ์เคลื่อนที่"</string>
+    <string name="stk_channel_name" msgid="3945765236566954372">"ข้อความบริการมือถือ"</string>
 </resources>

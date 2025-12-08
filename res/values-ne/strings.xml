@@ -31,8 +31,8 @@
     <string name="default_call_setup_msg" msgid="6490156065165946828">"कल प्रक्रियामा छ..."</string>
     <string name="default_setup_call_msg" msgid="5819132588246209714">"कल सेटअप हुदैछ"</string>
     <string name="stk_app_state" msgid="6274976677198791616">"एप स्टेट"</string>
-    <string name="enable_app" msgid="1980493713217690903">"सक्षम पारिएको छ"</string>
-    <string name="disable_app" msgid="2298201833946002357">"असक्षम पारियो"</string>
+    <string name="enable_app" msgid="1980493713217690903">"अन गरिएको छ"</string>
+    <string name="disable_app" msgid="2298201833946002357">"अफ गरिएको छ"</string>
     <string name="stk_dialog_title" msgid="1047336800509270520">"SIM  टुलकिट"</string>
     <string name="default_tone_dialog_msg" msgid="8354658178971283852">"बजिरहेको टोन"</string>
     <string name="default_open_channel_msg" msgid="2043011408855389673">"च्यानल खोल्ने?"</string>

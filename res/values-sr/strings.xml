@@ -22,7 +22,7 @@
     <string name="menu_back" msgid="7136697148453089659">"Назад"</string>
     <string name="service_name" msgid="6767598098497885828">"Назив услуге"</string>
     <string name="stk_no_service" msgid="1905632157498220090">"Ниједна услуга није доступна"</string>
-    <string name="button_ok" msgid="7914432227722142434">"Потврди"</string>
+    <string name="button_ok" msgid="7914432227722142434">"Важи"</string>
     <string name="button_cancel" msgid="137404731092374681">"Откажи"</string>
     <string name="button_yes" msgid="755426085739326674">"Да"</string>
     <string name="button_no" msgid="564962410861983724">"Не"</string>
