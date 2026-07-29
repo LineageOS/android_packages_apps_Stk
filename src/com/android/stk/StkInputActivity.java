@@ -164,7 +164,7 @@ public class StkInputActivity extends AppCompatActivity implements View.OnClickL
         // Set the layout for this activity.
         setContentView(R.layout.stk_input);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (getResources().getBoolean(R.bool.show_menu_title_only_on_menu)) {
             getSupportActionBar().hide();
 
@@ -269,7 +269,7 @@ public class StkInputActivity extends AppCompatActivity implements View.OnClickL
         switch (keyCode) {
         case KeyEvent.KEYCODE_BACK:
             CatLog.d(LOG_TAG, "onKeyDown - KEYCODE_BACK");
-            sendResponse(StkAppService.RES_ID_BACKWARD, null, false);
+            handleBackNavigation();
             return true;
         }
         return super.onKeyDown(keyCode, event);
@@ -334,10 +334,20 @@ public class StkInputActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            handleBackNavigation();
+            return true;
+        }
         if (optionsItemSelectedInternal(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void handleBackNavigation() {
+        if (!mIsResponseSent) {
+            sendResponse(StkAppService.RES_ID_BACKWARD, null, false);
+        }
     }
 
     private boolean optionsItemSelectedInternal(MenuItem item) {

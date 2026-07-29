@@ -22,12 +22,15 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical"
-    android:padding="14dip">
+    android:paddingStart="24dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="24dp"
+    android:paddingBottom="24dp">
 
     <ImageView
         android:id="@+id/icon"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:scaleType="fitCenter"
         android:gravity="center" />
 
@@ -35,10 +38,10 @@
         android:id="@+id/message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dip"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="@style/TextAppearance.SettingsLib.BodyLarge"
+        android:textIsSelectable="true"
+        android:textColor="@color/settingslib_materialColorOnSurfaceVariant" />
 
 </LinearLayout>
-
-

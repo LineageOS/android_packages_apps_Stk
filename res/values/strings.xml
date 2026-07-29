@@ -23,6 +23,9 @@
     <string name="help">Help</string>
     <!-- Menu button option to navigate back to the previous screen -->
     <string name="menu_back">Back</string>
+    <string name="more">More options</string>
+    <!-- Accessibility label for the toolbar progress indicator -->
+    <string name="loading">Loading</string>
     <!-- Settings entry which describes the current SIM Toolkit service on the device -->
     <string name="service_name">Service name</string>
     <!-- Default description for service_name when no STK service is available -->

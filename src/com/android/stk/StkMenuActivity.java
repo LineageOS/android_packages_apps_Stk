@@ -16,50 +16,55 @@
 
 package com.android.stk;
 
-import android.app.ActionBar;
 import android.app.AlarmManager;
-import android.app.ListActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.telephony.SubscriptionManager;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.window.OnBackInvokedCallback;
+import android.window.OnBackInvokedDispatcher;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarAppCompatActivity;
 
 import com.android.internal.telephony.cat.CatLog;
 import com.android.internal.telephony.cat.Item;
 import com.android.internal.telephony.cat.Menu;
 
 /**
- * ListActivity used for displaying STK menus. These can be SET UP MENU and
+ * Activity used for displaying STK menus. These can be SET UP MENU and
  * SELECT ITEM menus. This activity is started multiple times with different
  * menu content.
  *
  */
-public class StkMenuActivity extends ListActivity implements View.OnCreateContextMenuListener {
+public class StkMenuActivity extends CollapsingToolbarAppCompatActivity implements
+        View.OnCreateContextMenuListener {
     private Menu mStkMenu = null;
     private int mState = STATE_MAIN;
     private boolean mAcceptUsersInput = true;
     private int mSlotId = -1;
     private boolean mIsResponseSent = false;
 
-    private TextView mTitleTextView = null;
-    private ImageView mTitleIconView = null;
     private ProgressBar mProgressView = null;
+    private MenuItem mProgressItem;
+    private boolean mProgressVisible;
+    private RecyclerView mListView;
+    private OnBackInvokedCallback mBackCallback;
+    private int mContextMenuPosition = RecyclerView.NO_POSITION;
 
     private static final String LOG_TAG = StkMenuActivity.class.getSimpleName();
 
@@ -89,18 +94,13 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
                 WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
         CatLog.d(LOG_TAG, "onCreate");
 
-        ActionBar actionBar = getActionBar();
-        actionBar.setCustomView(R.layout.stk_title);
-        actionBar.setDisplayShowCustomEnabled(true);
-
-        StkApp.setupEdgeToEdge(this);
         // Set the layout for this activity.
         setContentView(R.layout.stk_menu_list);
-        mTitleTextView = (TextView) findViewById(R.id.title_text);
-        mTitleIconView = (ImageView) findViewById(R.id.title_icon);
-        mProgressView = (ProgressBar) findViewById(R.id.progress_bar);
-        getListView().setOnCreateContextMenuListener(this);
-
+        mListView = findViewById(android.R.id.list);
+        mListView.setLayoutManager(new LinearLayoutManager(this));
+        if (getAppBarLayout() != null) {
+            getAppBarLayout().setExpanded(false, false);
+        }
         // appService can be null if this activity is automatically recreated by the system
         // with the saved instance state right after the phone process is killed.
         if (appService == null) {
@@ -112,6 +112,12 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
         LocalBroadcastManager.getInstance(this).registerReceiver(mLocalBroadcastReceiver,
                 new IntentFilter(StkAppService.SESSION_ENDED));
         initFromIntent(getIntent());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(mState == STATE_SECONDARY);
+        if (mState == STATE_SECONDARY) {
+            mBackCallback = this::handleBackNavigation;
+            getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
+                    OnBackInvokedDispatcher.PRIORITY_DEFAULT, mBackCallback);
+        }
         if (!SubscriptionManager.isValidSlotIndex(mSlotId)) {
             finish();
             return;
@@ -121,10 +127,7 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
         }
     }
 
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-
+    protected void onListItemClick(int position) {
         if (!mAcceptUsersInput) {
             CatLog.d(LOG_TAG, "mAcceptUsersInput:false");
             return;
@@ -142,28 +145,20 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        CatLog.d(LOG_TAG, "mAcceptUsersInput: " + mAcceptUsersInput);
-        if (!mAcceptUsersInput) {
-            return true;
-        }
+    public boolean onSupportNavigateUp() {
+        handleBackNavigation();
+        return true;
+    }
 
-        switch (keyCode) {
-        case KeyEvent.KEYCODE_BACK:
-            CatLog.d(LOG_TAG, "KEYCODE_BACK - mState[" + mState + "]");
-            switch (mState) {
-            case STATE_SECONDARY:
-                CatLog.d(LOG_TAG, "STATE_SECONDARY");
-                sendResponse(StkAppService.RES_ID_BACKWARD);
-                return true;
-            case STATE_MAIN:
-                CatLog.d(LOG_TAG, "STATE_MAIN");
-                finish();
-                return true;
-            }
-            break;
+    private void handleBackNavigation() {
+        if (!mAcceptUsersInput) {
+            return;
         }
-        return super.onKeyDown(keyCode, event);
+        if (mState == STATE_SECONDARY) {
+            sendResponse(StkAppService.RES_ID_BACKWARD);
+        } else {
+            finish();
+        }
     }
 
     @Override
@@ -223,7 +218,9 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
 
     @Override
     public void onDestroy() {
-        getListView().setOnCreateContextMenuListener(null);
+        if (mBackCallback != null) {
+            getOnBackInvokedDispatcher().unregisterOnBackInvokedCallback(mBackCallback);
+        }
         super.onDestroy();
         CatLog.d(LOG_TAG, "onDestroy" + ", " + mState);
         if (appService == null || !SubscriptionManager.isValidSlotIndex(mSlotId)) {
@@ -246,6 +243,11 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         super.onCreateOptionsMenu(menu);
+        mProgressItem = menu.add(0, android.view.Menu.NONE, 0, R.string.loading);
+        mProgressItem.setActionView(R.layout.stk_toolbar_progress);
+        mProgressItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        mProgressItem.setVisible(mProgressVisible);
+        mProgressView = mProgressItem.getActionView().findViewById(R.id.progress_bar);
         menu.add(0, StkApp.MENU_ID_END_SESSION, 1, R.string.menu_end_session);
         return true;
     }
@@ -297,15 +299,12 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info;
-        try {
-            info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        } catch (ClassCastException e) {
-            return false;
-        }
         switch (item.getItemId()) {
             case CONTEXT_MENU_HELP:
-                int position = info.position;
+                int position = mContextMenuPosition;
+                if (position == RecyclerView.NO_POSITION) {
+                    return false;
+                }
                 CatLog.d(LOG_TAG, "Position:" + position);
                 Item stkItem = getSelectedItem(position);
                 if (stkItem != null) {
@@ -379,37 +378,49 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
 
         if (mStkMenu != null) {
             String title = mStkMenu.title == null ? getString(R.string.app_name) : mStkMenu.title;
-            // Display title & title icon
+            Toolbar toolbar = findViewById(R.id.support_action_bar);
             if (mStkMenu.titleIcon != null) {
-                mTitleIconView.setImageBitmap(mStkMenu.titleIcon);
-                mTitleIconView.setVisibility(View.VISIBLE);
-                mTitleTextView.setVisibility(View.INVISIBLE);
+                toolbar.setLogo(new BitmapDrawable(getResources(), mStkMenu.titleIcon));
+                toolbar.setLogoDescription(title);
                 if (!mStkMenu.titleIconSelfExplanatory) {
-                    mTitleTextView.setText(title);
-                    mTitleTextView.setVisibility(View.VISIBLE);
+                    setTitle(title);
+                } else {
+                    setTitle(getString(R.string.app_name));
                 }
             } else {
-                mTitleIconView.setVisibility(View.GONE);
-                mTitleTextView.setVisibility(View.VISIBLE);
-                mTitleTextView.setText(title);
+                toolbar.setLogo(null);
+                toolbar.setLogoDescription(null);
+                setTitle(title);
             }
+            int defaultItem = mStkMenu.defaultItem >= 0
+                    && mStkMenu.defaultItem < mStkMenu.items.size()
+                    ? mStkMenu.defaultItem : RecyclerView.NO_POSITION;
             // create an array adapter for the menu list
             StkMenuAdapter adapter = new StkMenuAdapter(this,
-                    mStkMenu.items, mStkMenu.itemsIconSelfExplanatory);
+                    mStkMenu.items, mStkMenu.itemsIconSelfExplanatory,
+                    this::onListItemClick, position -> mContextMenuPosition = position,
+                    this);
             // Bind menu list to the new adapter.
-            setListAdapter(adapter);
+            mListView.setAdapter(adapter);
             // Set default item
-            setSelection(mStkMenu.defaultItem);
+            if (defaultItem != RecyclerView.NO_POSITION) {
+                mListView.scrollToPosition(defaultItem);
+            }
         }
     }
 
     private void showProgressBar(boolean show) {
+        mProgressVisible = show;
+        if (mProgressItem != null) {
+            mProgressItem.setVisible(show);
+        }
+        if (mProgressView == null) {
+            return;
+        }
         if (show) {
             mProgressView.setIndeterminate(true);
-            mProgressView.setVisibility(View.VISIBLE);
         } else {
             mProgressView.setIndeterminate(false);
-            mProgressView.setVisibility(View.GONE);
         }
     }
 

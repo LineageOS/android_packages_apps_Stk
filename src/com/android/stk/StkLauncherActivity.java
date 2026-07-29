@@ -16,17 +16,10 @@
 
 package com.android.stk;
 
-import android.app.ActionBar;
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.KeyEvent;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
@@ -38,14 +31,17 @@ import android.telephony.TelephonyManager;
 
 import java.util.ArrayList;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarAppCompatActivity;
+
 /**
  * Launcher class. Serve as the app's MAIN activity, send an intent to the
  * StkAppService and finish.
  *
  */
-public class StkLauncherActivity extends ListActivity {
-    private TextView mTitleTextView = null;
-    private ImageView mTitleIconView = null;
+public class StkLauncherActivity extends CollapsingToolbarAppCompatActivity {
     private static final String LOG_TAG = StkLauncherActivity.class.getSimpleName();
     private ArrayList<Item> mStkMenuList = null;
     private int mSingleSimId = -1;
@@ -53,11 +49,11 @@ public class StkLauncherActivity extends ListActivity {
     private TelephonyManager mTm = null;
     private Bitmap mBitMap = null;
     private boolean mAcceptUsersInput = true;
+    private RecyclerView mListView;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        StkApp.setupEdgeToEdge(this);
         getWindow().addSystemFlags(
                 WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
         CatLog.d(LOG_TAG, "onCreate+");
@@ -65,14 +61,14 @@ public class StkLauncherActivity extends ListActivity {
         mTm = (TelephonyManager) mContext.getSystemService(
                 Context.TELEPHONY_SERVICE);
 
-        ActionBar actionBar = getActionBar();
-        actionBar.setCustomView(R.layout.stk_title);
-        actionBar.setDisplayShowCustomEnabled(true);
-
         setContentView(R.layout.stk_menu_list);
-        mTitleTextView = (TextView) findViewById(R.id.title_text);
-        mTitleIconView = (ImageView) findViewById(R.id.title_icon);
-        mTitleTextView.setText(R.string.app_name);
+        setTitle(R.string.app_name);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        if (getAppBarLayout() != null) {
+            getAppBarLayout().setExpanded(false, false);
+        }
+        mListView = findViewById(android.R.id.list);
+        mListView.setLayoutManager(new LinearLayoutManager(this));
         mBitMap = BitmapFactory.decodeResource(getResources(),
                 R.mipmap.ic_launcher);
     }
@@ -82,9 +78,7 @@ public class StkLauncherActivity extends ListActivity {
         super.onNewIntent(intent);
     }
 
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
+    protected void onListItemClick(int position) {
         if (!mAcceptUsersInput) {
             CatLog.d(LOG_TAG, "mAcceptUsersInput:false");
             return;
@@ -103,19 +97,9 @@ public class StkLauncherActivity extends ListActivity {
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        CatLog.d(LOG_TAG, "mAcceptUsersInput: " + mAcceptUsersInput);
-        if (!mAcceptUsersInput) {
-            return true;
-        }
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                CatLog.d(LOG_TAG, "KEYCODE_BACK.");
-                mAcceptUsersInput = false;
-                finish();
-                return true;
-        }
-        return super.onKeyDown(keyCode, event);
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     @Override
@@ -208,9 +192,9 @@ public class StkLauncherActivity extends ListActivity {
         if (mStkMenuList != null && mStkMenuList.size() > 0) {
             if (mStkMenuList.size() > 1) {
                 StkMenuAdapter adapter = new StkMenuAdapter(this,
-                        mStkMenuList, false);
+                        mStkMenuList, false, this::onListItemClick, null, null);
                 // Bind menu list to the new adapter.
-                this.setListAdapter(adapter);
+                mListView.setAdapter(adapter);
             }
             return mStkMenuList.size();
         } else {

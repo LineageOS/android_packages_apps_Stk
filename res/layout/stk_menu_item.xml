@@ -16,29 +16,30 @@
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:gravity="center"
-	android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    android:gravity="center_vertical"
+    android:minHeight="72dp"
+    android:orientation="horizontal"
+    android:paddingStart="32dp"
+    android:paddingEnd="32dp">
 
 	<ImageView
-	    android:id="@+id/icon"
+        android:id="@+id/icon"
         android:scaleType="fitCenter"
-        android:layout_width="@android:dimen/app_icon_size"
-        android:layout_height="@android:dimen/app_icon_size"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="5dip"
-    />
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="12dp"
+        android:contentDescription="@null" />
 
 	<TextView
-	    android:id="@+id/text"
-	    android:layout_width="match_parent"
+        android:id="@+id/text"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:maxLength="234"
-        android:minHeight="?android:attr/listPreferredItemHeight"
-	    android:textAppearance="?android:attr/textAppearanceLarge"
-	    android:gravity="center_vertical"
-	    android:layout_marginLeft="9dip"
-	/>
+        android:maxLines="2"
+        android:textAppearance="@style/TextAppearance.SettingsLib.PreferenceTitle" />
 
 </LinearLayout>

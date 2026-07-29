@@ -23,7 +23,6 @@ import static com.android.internal.telephony.cat.CatCmdMessage.SetupEventListCon
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
-import android.app.AlertDialog;
 import android.app.HomeVisibilityListener;
 import android.app.KeyguardManager;
 import android.app.Notification;
@@ -68,6 +67,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -2341,7 +2342,8 @@ public class StkAppService extends Service implements Runnable {
             msg.text = getResources().getString(R.string.default_open_channel_msg);
         }
 
-        mAlertDialog = new AlertDialog.Builder(mContext)
+        mAlertDialog = new AlertDialog.Builder(mContext,
+                    R.style.Theme_AlertDialog_SettingsLib_Expressive)
                     .setIconAttribute(android.R.attr.alertDialogIcon)
                     .setTitle(msg.title)
                     .setMessage(msg.text)
@@ -2384,7 +2386,8 @@ public class StkAppService extends Service implements Runnable {
 
         msg.title = getResources().getString(R.string.stk_dialog_title);
 
-        final AlertDialog dialog = new AlertDialog.Builder(mContext)
+        final AlertDialog dialog = new AlertDialog.Builder(mContext,
+                    R.style.Theme_AlertDialog_SettingsLib_Expressive)
                     .setIconAttribute(android.R.attr.alertDialogIcon)
                     .setTitle(msg.title)
                     .setMessage(msg.text)
