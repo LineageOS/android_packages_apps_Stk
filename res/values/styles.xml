@@ -15,13 +15,35 @@
 -->
 
 <resources>
-    <style name="Transparent" parent="@android:style/Theme.DeviceDefault.DayNight">
+    <style name="Theme.Stk" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="android:fontFamily">sans</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorSurface">?android:attr/colorBackground</item>
+        <item name="alertDialogTheme">@style/Theme.AlertDialog.SettingsLib.Expressive</item>
+        <item name="android:alertDialogTheme">@style/Theme.DeviceDefault.AlertDialog.SettingsLib.Expressive</item>
+        <item name="materialAlertDialogTheme">@style/Theme.AlertDialog.SettingsLib.Expressive</item>
+    </style>
+
+    <style name="Transparent" parent="Theme.Stk">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.32</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
     </style>
+
+    <style name="Widget.Stk.TextInputLayout"
+        parent="Widget.Material3.TextInputLayout.FilledBox" />
+
+    <style name="Widget.Stk.Button" parent="Widget.Material3.Button" />
+
+    <style name="Widget.Stk.Button.Text" parent="Widget.Material3.Button.TextButton" />
 </resources>

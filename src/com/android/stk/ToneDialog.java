@@ -17,7 +17,6 @@
 package com.android.stk;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -30,9 +29,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+
 import com.android.internal.telephony.cat.CatLog;
 import com.android.internal.telephony.cat.TextMessage;
-import com.android.internal.telephony.cat.CatLog;
 
 /**
  * Activity used to display tone dialog.
@@ -56,7 +57,8 @@ public class ToneDialog extends Activity {
         filter.addAction(StkAppService.FINISH_TONE_ACTIVITY_ACTION);
         registerReceiver(mFinishActivityReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,
+                R.style.Theme_AlertDialog_SettingsLib_Expressive);
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.stk_tone_dialog, null);
         alertDialogBuilder.setView(dialogView);

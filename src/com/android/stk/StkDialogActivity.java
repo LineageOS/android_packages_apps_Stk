@@ -18,7 +18,6 @@ package com.android.stk;
 
 import android.app.Activity;
 import android.app.AlarmManager;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -30,6 +29,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.android.internal.telephony.cat.CatLog;
 import com.android.internal.telephony.cat.TextMessage;
@@ -78,7 +79,8 @@ public class StkDialogActivity extends Activity {
         // New Dialog is created - set to no response sent
         mIsResponseSent = false;
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,
+                R.style.Theme_AlertDialog_SettingsLib_Expressive);
 
         alertDialogBuilder.setPositiveButton(R.string.button_ok, new
                 DialogInterface.OnClickListener() {
